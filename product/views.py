@@ -26,3 +26,21 @@ def create_product(request):
         return render(request, 'product/create_product.template.html',{
             'form': create_form
         })
+
+def update_product(request,product_id):
+    update_product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == "POST":
+        form_for_product =ProductForm(request.POST,instance=update_product)
+        if form_for_product.is_valid():
+            form_for_product.save()
+            return redirect(reverse(index))
+        else:
+            return render(request, 'product/update_product.template.html', {
+                "form": form_for_product
+                })
+    else:
+        form_for_product = ProductForm(instance=update_product)
+        return render(request, 'product/update_product.template.html', {
+            "form": form_for_product
+        })

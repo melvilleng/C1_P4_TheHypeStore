@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('product/',product.views.index),
     path('product/create_product',product.views.create_product),
+    path('product/update_product/<product_id>',product.views.update_product, name='update_product_route'),
 ]
