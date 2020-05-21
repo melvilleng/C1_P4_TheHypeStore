@@ -9,6 +9,14 @@ class Product(models.Model):
     color = models.CharField(blank=False, max_length=50)
     image = models.ImageField(blank=False)
     date = models.DateField(auto_now=False,auto_now_add=False)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+
+
+class Category(models.Model):
+    category_name = models.CharField(blank=False, max_length=100)
+
+    def __str__(self):
+        return self.category_name
