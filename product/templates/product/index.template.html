@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'styles.css'%}"/>
 </head>
 <body>
-    <h1>Product</h1>
+    <h1>Welcome {{request.user}}</h1>
     <p>
     {%for product in product%}
         <li>{{product.name}}
