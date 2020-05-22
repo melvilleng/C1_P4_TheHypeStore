@@ -17,8 +17,11 @@ class SignupForm(forms.Form):
         profile.address_2= self.cleaned_data['address_2']
         profile.contact = self.cleaned_data['contact']
         user.save()
-        group_customer = Group.objects.get(name='customer')
-        group_customer.user_set.add(user)
 
         profile.user = user
         profile.save()
+        
+        group_customer = Group.objects.get(name='customer')
+        group_customer.user_set.add(user)
+
+        
