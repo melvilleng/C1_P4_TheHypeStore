@@ -1,5 +1,6 @@
 from django import forms
 from accounts.models import UserProfile
+from django.contrib.auth.models import Group
 
 class SignupForm(forms.Form):
     first_name = forms.CharField(max_length=50)
@@ -16,5 +17,8 @@ class SignupForm(forms.Form):
         profile.address_2= self.cleaned_data['address_2']
         profile.contact = self.cleaned_data['contact']
         user.save()
+        group_customer = Group.objects.get(name='customer')
+        group_customer.user_set.add(user)
+
         profile.user = user
         profile.save()
