@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'pyuploadcare.dj',
     'crispy_forms',
+    'accounts',
 
     #my apps
     'product'
@@ -100,6 +101,7 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 #after successful login go to url
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm'
 
 WSGI_APPLICATION = 'thehypestore.wsgi.application'
 
