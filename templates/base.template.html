@@ -9,11 +9,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>{%block title%}{%endblock%}</title>
-    {%block head%}{%endblock%}
   </head>
   <body>
     <div class="container">
-        {%block content%}{%endblock%}
+    {%if not request.resolver_match.url_name == 'account_login' %}
+        <p>Logged in as : {{request.user}}</p>
+        {%if not request.user.is_authenticated %}
+        <p>
+            <a href="{%url 'account_login' %}">Log In</a>
+        </p>
+        {%else%}
+        <p><a href="{%url 'show_cart_route' %}">Cart</a></p>
+        <p><a href="{%url 'account_logout' %}">Log Out</a></p>
+        {%endif%}
+    {%endif%}
+
+    {%block content%}{%endblock%}
     </div>
 
     {%block js%}

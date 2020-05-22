@@ -2,21 +2,29 @@
 {%load static%}
 {%block content%}
 
+<table>
  <h1>Welcome {{request.user}} here</h1>
-    <ul>
+    <tbody>
     {%for product in product%}
-        <li>{{product.name}}
-        {{product.price}}
-        {{product.description}}
-        {{product.size}}
-        {{product.color}}
-        {{product.date}}
-        <a href="{% url 'update_product_route' product_id=product.id %}">Edit</a>
-        <a href="{% url 'delete_product_route' product_id=product.id %}">delete</a>
-        {%if product.image%}
+    <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.size}}</td>
+        <td>{{product.color}}</td>
+        <td>{{product.date}}</td>
+        <td>{%if product.image%}
         <img src="{{product.image.cdn_url}}"/>
         {%endif%}
-        </li>
-        {%endfor%}
-    </ul>
+        </td>
+        <td>
+        <a href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
+        <a href="{% url 'update_product_route' product_id=product.id %}">Edit</a>
+        <a href="{% url 'delete_product_route' product_id=product.id %}">delete</a>
+        
+        </td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
 {%endblock%}
