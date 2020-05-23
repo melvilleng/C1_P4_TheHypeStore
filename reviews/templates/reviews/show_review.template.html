@@ -1,0 +1,17 @@
+{% extends 'base.template.html'%}
+{%block content %}
+
+<article>
+{%for review in reviews%}
+    <h1>{{review.title}}</h1>
+    <h2>For: {{review.product.name}}</h2>
+    <h3>By: {{review.user.username}}</h3>
+    <section class="card">
+        <div class="card-text">
+            {{review.content}}
+        </div>
+    </section>
+{%endfor%}
+</article>
+
+{%endblock%}
