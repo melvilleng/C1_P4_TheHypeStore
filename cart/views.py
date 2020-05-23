@@ -37,9 +37,17 @@ def show_cart(request):
     })
 
 def delete_from_cart(request, product_id):
-    cart = reuqest.session.get('shopping_cart')
+    cart = request.session.get('shopping_cart')
     if product_id in cart:
         del cart[product_id]
         cart = request.session['shopping_cart']
-        messages.success("Item Deleted")
-    return redirect(reverse('show_product_route'))
+        messages.success(request, "Item Deleted")
+    return redirect(reverse('show_cart_route'))
+
+def update_quantity(request,product_id):
+    cart = request.session.get('shopping_cart')
+    if product_id in cart:
+        cart[product_id]['qty'] = request.POST.qty
+        request.session['shopping_cart'] = cart
+        messages.success(request, f"Quantity has been updated")
+    return redirect(reverse('show_cart_route'))
