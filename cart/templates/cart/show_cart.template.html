@@ -12,6 +12,7 @@
         <input type="submit" class="btn btn-primary btn-sm" value="Update Quantity"/>
         </form>
         Cost: {{cart_product.cost}}
+         
     </p>
     <a class="btn btn-danger btn-sm" href="{% url 'delete_from_cart_route' product_id=cart_product.id %}">Delete</a>
     </div>
