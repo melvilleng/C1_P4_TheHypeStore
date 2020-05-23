@@ -16,7 +16,7 @@ def add_to_cart(request, product_id):
         cart[product_id] = {
             'id': product_id,
             'name': product.name,
-            'cost': 99,
+            'cost': float(product.price),
             'qty': 1,
         }
         messages.success(request, f"Product:{product.name} has been added")
@@ -47,7 +47,7 @@ def delete_from_cart(request, product_id):
 def update_quantity(request,product_id):
     cart = request.session.get('shopping_cart')
     if product_id in cart:
-        cart[product_id]['qty'] = request.POST.qty
+        cart[product_id]['qty'] = request.POST['qty']
         request.session['shopping_cart'] = cart
         messages.success(request, f"Quantity has been updated")
     return redirect(reverse('show_cart_route'))
