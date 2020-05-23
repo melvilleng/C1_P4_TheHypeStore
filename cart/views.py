@@ -35,3 +35,11 @@ def show_cart(request):
     return render(request, 'cart/show_cart.template.html',{
         'cart': cart
     })
+
+def delete_from_cart(request, product_id):
+    cart = reuqest.session.get('shopping_cart')
+    if product_id in cart:
+        del cart[product_id]
+        cart = request.session['shopping_cart']
+        messages.success("Item Deleted")
+    return redirect(reverse('show_product_route'))
