@@ -11,6 +11,12 @@
     <title>{%block title%}{%endblock%}</title>
   </head>
   <body>
+    {%if messages %}
+    {%for message in messages%}
+        <div class="alert alert-success">{{message}}</div>
+    {%endfor%}
+    {%endif%}
+
     <div class="container">
     {%if not request.resolver_match.url_name == 'account_login' %}
         <p>Logged in as : {{request.user}}</p>
@@ -23,7 +29,6 @@
         <p><a href="{%url 'account_logout' %}">Log Out</a></p>
         {%endif%}
     {%endif%}
-
     {%block content%}{%endblock%}
     </div>
 

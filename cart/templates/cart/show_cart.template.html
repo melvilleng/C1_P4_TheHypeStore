@@ -1,14 +1,15 @@
 {%extends 'base.template.html'%}
 
-{%block content%}
+{%block content %}
 {%for key, cart_product in cart.items %}
 <div class="card">
-    <div class="card-name">{{cart_product.name}}</div>
+    <div class="card-title">{{cart_product.name}}</div>
     <div class="card-body">
     <p>
-        Quantity:{{cart_product.qty}}<br/>
+        Quantity:{{cart_product.qty}}
         Cost: {{cart_product.cost}}
     </p>
+    </div>
 </div>
 {%endfor%}
 {%endblock%}
