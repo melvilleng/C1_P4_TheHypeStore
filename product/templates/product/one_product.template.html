@@ -1,0 +1,24 @@
+{%extends 'base.template.html' %}
+
+{%block content%}
+<h1>{{product.name}}</h1>
+<p>
+    Price: {{product.price}}
+</p>
+<p>
+    Price: {{product.description}}
+</p>
+<p>
+    Price: {{product.size}}
+</p>
+<p>
+    Price: {{product.color}}
+</p>
+<p>
+    {%if product.image%}
+        <img src="{{product.image.cdn_url}}"/>
+        {%endif%}
+</p>
+        
+{%endblock%}
+    

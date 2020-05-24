@@ -18,6 +18,7 @@
         {%endif%}
         </td>
         <td>
+        <a href="{% url 'product_details' product_id=product.id %}">{{product.name}}</a>
         <a href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
         <a href="{% url 'update_product_route' product_id=product.id %}">Edit</a>
         <a href="{% url 'delete_product_route' product_id=product.id %}">delete</a>
