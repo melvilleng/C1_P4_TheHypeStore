@@ -1,0 +1,72 @@
+{%extends 'base.template.html' %}
+{%load crispy_forms_tags %}
+{%load static%}
+{%block content%}
+
+{% if request.user.is_staff %}
+<table>
+ <h1>Welcome {{request.user}} here</h1>
+ <form method="GET">
+ {{search_form|crispy}}
+ <input type="submit" value="Search"/>
+ </form>
+ 
+    <tbody>
+    {%for product in product%}
+    <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.size}}</td>
+        <td>{{product.color}}</td>
+        <td>{{product.date}}</td>
+        <td>{%if product.image%}
+        <img src="{{product.image.cdn_url}}"/>
+        {%endif%}
+        </td>
+        <td>
+        <a href="{% url 'product_details' product_id=product.id %}">{{product.name}}</a>
+        <a href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
+        <a href="{% url 'update_product_route' product_id=product.id %}">Edit</a>
+        <a href="{% url 'delete_product_route' product_id=product.id %}">delete</a>
+        
+        </td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+{%endif%}
+
+
+<table>
+ <form method="GET">
+ {{search_form|crispy}}
+ <input type="submit" value="Search"/>
+ </form>
+  
+<!--Start of Card-->
+    <div class="container-fluid">
+			<div class="card-deck">
+				{%for product in product%}  
+				<div class="card">
+                <div class="thumbnail">
+					<img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+                </div>
+					<div class="card-body">
+						<h3 class="card-title"><b>{{product.name}}</b></h3>
+						<h6 class="card-text">
+                         <h4>${{product.price}}</h4>
+						</h6>
+                        <br>
+                       <div class="row" style="justify-content:space-around;">
+                        <div class="card-footer text-center">
+                        <a href="{% url 'product_details' product_id=product.id %}">View More</a>
+				</div>
+                        </div>
+					</div>
+				</div>
+				{%endfor%}
+			</div>
+		</div>
+
+{%endblock%}

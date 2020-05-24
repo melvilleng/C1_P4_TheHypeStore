@@ -1,3 +1,8 @@
 body{
     background-color:red;
 }
+
+.thumbnail img {
+    height:290px;
+    width:100%;
+}

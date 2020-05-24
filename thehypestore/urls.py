@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', product.views.index, name='show_product_route'),
+    path('product/', product.views.all_product, name='show_allproduct_route'),
     path('product/create_product',product.views.create_product, name='create_product_route'),
     path('product/update_product/<product_id>',product.views.update_product, name='update_product_route'),
     path('product/delete_product/<product_id>',product.views.delete_product, name= 'delete_product_route'),

@@ -1,3 +1,4 @@
+{%load staticfiles%}
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>   
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
     <!--Navbar start-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,10 +27,10 @@
                     
                 {% if request.user.is_staff %}
                      <li class="nav-item active">
-						<a class="nav-link" href="{%url 'show_product_route'%}"><b>My Listing</b></a>
+						<a class="nav-link" href="{%url 'show_allproduct_route'%}"><b>Products</b></a>
 					</li>
                     <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{%url 'show_product_route'%}"><b>Category</b></a>
+						<a class="nav-link dropdown-toggle" href="{%url 'show_allproduct_route'%}"><b>Category</b></a>
 					</li>
                      <li class="nav-item active">
 						<a class="nav-link" href="{% url 'create_product_route'%}"><b>Create Listing</b></a>
@@ -36,18 +38,18 @@
                 
                 {%elif request.user.is_authenticated %}
                     <li class="nav-item active">
-						<a class="nav-link" href="show_product_route"><b>My Listing</b></a>
+						<a class="nav-link" href="{%url 'show_allproduct_route'%}"><b>Products</b></a>
 					</li>
                     <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{%url 'show_product_route'%}"><b>Category</b></a>
+						<a class="nav-link dropdown-toggle" href="{%url 'show_allproduct_route'%}"><b>Category</b></a>
 					</li>
 					
                   {%else%}
                    <li class="nav-item active">
-						<a class="nav-link" href="show_product_route"><b>My Listing</b></a>
+						<a class="nav-link" href="{%url 'show_allproduct_route'%}"><b>Products</b></a>
 					</li>
                     <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{%url 'show_product_route'%}"><b>Category</b></a>
+						<a class="nav-link dropdown-toggle" href="{%url 'show_allproduct_route'%}"><b>Category</b></a>
 					</li>
 			
                 {%endif%}
@@ -98,9 +100,9 @@
         <div class="alert alert-success">{{message}}</div>
     {%endfor%}
     {%endif%}
-
+    <div class="container">
     {%block content%}{%endblock%}
-
+    </div>
 
     {%block js%}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -8,6 +8,12 @@ from django.contrib.admin.views.decorators import staff_member_required
 # Create your views here.
 def index(request):
     product = Product.objects.all()
+    return render(request,'product/index.template.html',{
+        'product': product,
+    })
+
+def all_product(request):
+    product = Product.objects.all()
     if request.GET:
         
         queries = ~Q(pk__in=[])
@@ -28,7 +34,7 @@ def index(request):
 
     category = Category.objects.all()
     search_form = SearchForm(request.GET)
-    return render(request,'product/index.template.html',{
+    return render(request,'product/all_product.template.html',{
         'product': product,
         'catergory': category,
         'search_form': search_form

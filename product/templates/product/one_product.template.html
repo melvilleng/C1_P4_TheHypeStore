@@ -20,7 +20,7 @@
         <img src="{{product.image.cdn_url}}"/>
         {%endif%}
 </p>
-
+<a href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
 <form method="POST" action="{% url 'create_review_route' product_id=product.id %}">
 {% csrf_token %}
 {{ form|crispy}}
