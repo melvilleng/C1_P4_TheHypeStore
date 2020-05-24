@@ -1,4 +1,5 @@
 {%extends 'base.template.html' %}
+{%load crispy_forms_tags %}
 
 {%block content%}
 <h1>{{product.name}}</h1>
@@ -19,6 +20,13 @@
         <img src="{{product.image.cdn_url}}"/>
         {%endif%}
 </p>
+
+<form method="POST" action="{% url 'create_review_route' product_id=product.id %}">
+{% csrf_token %}
+{{ form|crispy}}
+<input type="submit"/>
+</form>
+    
         
 {%endblock%}
-    
+

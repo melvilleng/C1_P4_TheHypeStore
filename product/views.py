@@ -1,12 +1,36 @@
 from django.shortcuts import render,HttpResponse,redirect,reverse,get_object_or_404
-from .forms import ProductForm
-from .models import Product
+from .forms import ProductForm, SearchForm
+from .models import Product , Category
+from reviews.forms import ReviewForm
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
     product = Product.objects.all()
+    if request.GET:
+        # always true query:
+        queries = ~Q(pk__in=[])
+
+        # if a title is specified, add it to the query
+        if 'name' in request.GET and request.GET['name']:
+            name = request.GET['name']
+            queries = queries & Q(name__icontains=name)
+
+        # if a genre is specified, add it to the query
+        if 'category' in request.GET and request.GET['category']:
+            print("adding category")
+            category = request.GET['category']
+            queries = queries & Q(category__in=category)
+
+        # update the existing book found
+        product = product.filter(queries)
+
+    category = Category.objects.all()
+    search_form = SearchForm(request.GET)
     return render(request,'product/index.template.html',{
-        'product': product
+        'product': product,
+        'catergory': category,
+        'search_form': search_form
     })
 
 def create_product(request):
@@ -60,6 +84,10 @@ def delete_product(request,product_id):
 #view product in details
 def product_details(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    review_form = ReviewForm()
     return render(request,'product/one_product.template.html',{
-        'product': product
+        'product': product,
+        'form': review_form
     })
+
+

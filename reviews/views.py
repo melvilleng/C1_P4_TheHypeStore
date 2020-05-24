@@ -11,11 +11,12 @@ def show_review(request):
         'reviews': reviews
     })
 
-def create_review(request):
+def create_review(request, product_id):
     if request.method == "POST":
         create_review_form = ReviewForm(request.POST)
         review = create_review_form.save(commit=False)
         review.user = request.user
+        review.product= get_object_or_404(Product, pk= product_id)
         review.save()
         messages.success(request, "Review Added")
         return redirect(reverse(show_review))
