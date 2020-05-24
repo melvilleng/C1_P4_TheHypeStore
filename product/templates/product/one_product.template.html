@@ -2,31 +2,37 @@
 {%load crispy_forms_tags %}
 
 {%block content%}
-<h1>{{product.name}}</h1>
-<p>
-    Price: {{product.price}}
-</p>
-<p>
-    Price: {{product.description}}
-</p>
-<p>
-    Price: {{product.size}}
-</p>
-<p>
-    Price: {{product.color}}
-</p>
-<p>
-    {%if product.image%}
-        <img src="{{product.image.cdn_url}}"/>
+<div class="card text-center image-size">
+	<div class="row">
+		<div class="col-md-4">
+			{%if product.image%}
+			<img src="{{product.image.cdn_url}}"/>
         {%endif%}
-</p>
-<a href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
-<form method="POST" action="{% url 'create_review_route' product_id=product.id %}">
-{% csrf_token %}
-{{ form|crispy}}
-<input type="submit"/>
-</form>
-    
-        
-{%endblock%}
+        </div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h1 class="card-title">{{product.name}}</h1>
+					<p class="card-text">Price: {{product.price}}</p>
+					<p class="card-text"> Description: {{product.description}}</p>
+					<p class="card-text"> Size: {{product.size}}</p>
+				</div>
+				<div>
+					<a class="btn btn-outline-primary active"
+						href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
+				</div>
+                <br>
+				<div>
+					<a class="btn btn-outline-danger active" href="{% url 'show_allproduct_route'%}">Back to Product</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<form method="POST" action="{% url 'create_review_route' product_id=product.id %}">
+		{% csrf_token %}
+		{{ form|crispy}}
+		<input type="submit"/>
+</form>
+
+
+		{%endblock%}

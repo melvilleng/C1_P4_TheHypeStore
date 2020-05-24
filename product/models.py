@@ -7,9 +7,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=3, blank=False)
     description = models.TextField(blank=False)
     size = models.CharField(blank=False,max_length=20)
-    color = models.CharField(blank=False, max_length=50)
     image = ImageField(blank=True, manual_crop="")
-    date = models.DateField(auto_now=False,auto_now_add=False)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     def __str__(self):
