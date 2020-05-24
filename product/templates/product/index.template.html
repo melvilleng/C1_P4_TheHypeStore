@@ -3,6 +3,7 @@
 {%load static%}
 {%block content%}
 
+{% if request.user.is_staff %}
 <table>
  <h1>Welcome {{request.user}} here</h1>
  <form method="GET">
@@ -33,4 +34,5 @@
     {%endfor%}
     </tbody>
 </table>
+{%endif%}
 {%endblock%}

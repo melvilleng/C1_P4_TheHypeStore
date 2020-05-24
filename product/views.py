@@ -1,22 +1,23 @@
 from django.shortcuts import render,HttpResponse,redirect,reverse,get_object_or_404
 from .forms import ProductForm, SearchForm
-from .models import Product , Category
+from .models import Product, Category
 from reviews.forms import ReviewForm
 from django.db.models import Q
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 def index(request):
     product = Product.objects.all()
     if request.GET:
-        # always true query:
+        
         queries = ~Q(pk__in=[])
 
-        # if a title is specified, add it to the query
+        # if a name is typed, add it to the query
         if 'name' in request.GET and request.GET['name']:
             name = request.GET['name']
             queries = queries & Q(name__icontains=name)
 
-        # if a genre is specified, add it to the query
+        # if a category is choose, add it to the query
         if 'category' in request.GET and request.GET['category']:
             print("adding category")
             category = request.GET['category']
@@ -33,6 +34,7 @@ def index(request):
         'search_form': search_form
     })
 
+@staff_member_required
 def create_product(request):
     if request.method == 'POST':
         create_form = ProductForm(request.POST)
@@ -51,6 +53,7 @@ def create_product(request):
             'form': create_form
         })
 
+@staff_member_required
 def update_product(request,product_id):
     update_product = get_object_or_404(Product, pk=product_id)
 
@@ -69,6 +72,7 @@ def update_product(request,product_id):
             "form": form_for_product
         })
 
+@staff_member_required
 def delete_product(request,product_id):
     product_to_delete = get_object_or_404(Product, pk=product_id)
 

@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404,redirect,reverse
 from product.models import Product
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def add_to_cart(request, product_id):
 
     #open file find the key 'shopping cart' in the session
@@ -29,6 +31,7 @@ def add_to_cart(request, product_id):
     request.session['shopping_cart'] = cart
     return redirect(reverse('show_product_route'))
 
+@login_required
 def show_cart(request):
     #Get the session
     cart = request.session.get('shopping_cart')
@@ -36,6 +39,7 @@ def show_cart(request):
         'cart': cart
     })
 
+@login_required
 def delete_from_cart(request, product_id):
     cart = request.session.get('shopping_cart')
     if product_id in cart:
@@ -44,6 +48,7 @@ def delete_from_cart(request, product_id):
         messages.success(request, "Item Deleted")
     return redirect(reverse('show_cart_route'))
 
+@login_required
 def update_quantity(request,product_id):
     cart = request.session.get('shopping_cart')
     if product_id in cart:
