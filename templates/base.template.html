@@ -7,7 +7,89 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+    <!--Navbar start-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="{% url 'show_product_route'%}">
+			<img src="/static/image/sgwlogo.jpg" width = "55" alt="" class="d-inline-block align-middle mr-2"/>
+        </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
 
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active">
+						<a class="nav-link" href="/"><b>Home</b> <span class="sr-only">(current)</span></a>
+					</li>
+                    
+                {% if request.user.is_staff %}
+                     <li class="nav-item active">
+						<a class="nav-link" href="{%url 'show_product_route'%}"><b>My Listing</b></a>
+					</li>
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{%url 'show_product_route'%}"><b>Category</b></a>
+					</li>
+                     <li class="nav-item active">
+						<a class="nav-link" href="{% url 'create_product_route'%}"><b>Create Listing</b></a>
+					</li>
+                
+                {%elif request.user.is_authenticated %}
+                    <li class="nav-item active">
+						<a class="nav-link" href="show_product_route"><b>My Listing</b></a>
+					</li>
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{%url 'show_product_route'%}"><b>Category</b></a>
+					</li>
+					
+                  {%else%}
+                   <li class="nav-item active">
+						<a class="nav-link" href="show_product_route"><b>My Listing</b></a>
+					</li>
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="{%url 'show_product_route'%}"><b>Category</b></a>
+					</li>
+			
+                {%endif%}
+				</ul>
+                <ul class="navbar-nav ml-auto">
+                {% if request.user.is_staff %}
+                    <li class="nav-item active">
+						<a class="nav-link" href="{%url 'account_logout' %}"><b>Logout</b></a>
+					</li>
+                    <li class="nav-item active">
+						<a class="nav-link" href="{%url 'show_cart_route' %}"><i class="fas fa-shopping-cart"></i><b>Cart</b></a>
+					</li>
+                {%elif request.user.is_authenticated %}
+                     <li class="nav-item active">
+						<a class="nav-link" href="{%url 'account_logout' %}"><b>Logout</b></a>
+					</li>
+                    <li class="nav-item active">
+						<a class="nav-link" href="{%url 'show_cart_route' %}"><i class="fas fa-shopping-cart"></i><b>Cart</b></a>
+					</li>
+					
+                  {%else%}
+                    <div class="arrow-up"></div>
+                    <li class="nav-item active">
+						<a class="nav-link" href="{%url 'account_login' %}"><b>Login</b></a>
+					</li>
+                    <div class="arrow-up"></div>
+                    <div class="login-form"></div>
+                    <li class="nav-item active">
+						<a class="nav-link" href="{%url 'account_signup' %}"><b>Sign Up</b></a>
+					</li>
+                    <li class="nav-item active">
+						<a class="nav-link" href="{%url 'show_cart_route' %}"><i class="fas fa-shopping-cart"></i><b>Cart</b></a>
+					</li>
+                {%endif%}
+                </ul>
+
+                
+			</div>
+ 
+	</nav>
+	<!--Navbar End-->
+    
     <title>{%block title%}{%endblock%}</title>
   </head>
   <body>
@@ -17,20 +99,8 @@
     {%endfor%}
     {%endif%}
 
-    <div class="container">
-    {%if not request.resolver_match.url_name == 'account_login' %}
-        <p>Logged in as : {{request.user}}</p>
-        {%if not request.user.is_authenticated %}
-        <p>
-            <a href="{%url 'account_login' %}">Log In</a>
-        </p>
-        {%else%}
-        <p><a href="{%url 'show_cart_route' %}">Cart</a></p>
-        <p><a href="{%url 'account_logout' %}">Log Out</a></p>
-        {%endif%}
-    {%endif%}
     {%block content%}{%endblock%}
-    </div>
+
 
     {%block js%}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
