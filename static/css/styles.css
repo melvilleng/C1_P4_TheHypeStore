@@ -11,3 +11,16 @@ body{
     margin:30px;
 }
 
+.page-footer{
+    background-color:#858679;
+    color:black;
+}
+
+#last-footer{
+    background-color:#797a6f;
+    margin-bottom:20px;
+}
+
+a{
+    color:black;
+}

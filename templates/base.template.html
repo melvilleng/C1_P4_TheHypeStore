@@ -29,9 +29,6 @@
                      <li class="nav-item active">
 						<a class="nav-link" href="{%url 'show_allproduct_route'%}"><b>Products</b></a>
 					</li>
-                    <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{%url 'show_allproduct_route'%}"><b>Category</b></a>
-					</li>
                      <li class="nav-item active">
 						<a class="nav-link" href="{% url 'create_product_route'%}"><b>Create Listing</b></a>
 					</li>
@@ -40,16 +37,10 @@
                     <li class="nav-item active">
 						<a class="nav-link" href="{%url 'show_allproduct_route'%}"><b>Products</b></a>
 					</li>
-                    <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{%url 'show_allproduct_route'%}"><b>Category</b></a>
-					</li>
 					
                   {%else%}
                    <li class="nav-item active">
 						<a class="nav-link" href="{%url 'show_allproduct_route'%}"><b>Products</b></a>
-					</li>
-                    <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="{%url 'show_allproduct_route'%}"><b>Category</b></a>
 					</li>
 			
                 {%endif%}
@@ -104,6 +95,63 @@
     <div class="container">
     {%block content%}{%endblock%}
     </div>
+
+    <!--Start Of Footer-->
+	<footer>
+		<div class="container">
+			<div class="page-footer font-small black pt-4 mt-5">
+
+				<!-- Footer Links -->
+				<div class="container-fluid text-center text-md-left">
+
+					<!-- Grid row -->
+					<div class="row">
+
+						<!-- Grid column -->
+						<div class="col-md-6 mt-md-0 mt-3">
+
+							<!-- Content -->
+							<h5 class="text-uppercase"><b>Subscribe to us for latest update:</b></h5>
+							<div class="form-group">
+								<input type="email" class="form-control" id="email" placeholder="Enter email:">
+                </div>
+
+							</div>
+
+
+							<!-- Grid column -->
+
+							<div class="col-md-6 mb-md-0 mb-6">
+								<h5><b>Follow us:</b></h5>
+								<div class="row">
+									<div class="col">
+										<a
+											href="https://www.facebook.com/Sneak-Gateway-Shop-110418183924731/"><i class="fab fa-facebook-square fa-3x" aria-hidden="true"></i></a>
+										<a
+											href="https://www.instagram.com/hiddensneak/"><i class="fab fa-instagram fa-3x" aria-hidden="true"></i></a>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="container">
+				<div class="container-fluid" id="last-footer">
+					<div class="row">
+						<div class="col-md text-center">
+							<a href="{% url 'show_product_route'%}">Home</a>
+						</div>
+					</div>
+				</div>
+			</div>
+	</footer>
+
 
     {%block js%}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
