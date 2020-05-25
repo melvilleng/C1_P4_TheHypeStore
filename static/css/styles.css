@@ -25,3 +25,31 @@ body{
 a{
     color:black;
 }
+
+@media screen and (max-width: 992px) {
+    table#cartitem tbody td .form-control{
+		display: inline !important;
+	}
+	.actions .btn{
+		width:37%;
+		margin:1.5em 0;
+	}
+	
+	.actions .btn-danger{
+        width:100%;
+	}
+	
+	table#cartitem thead { display: none; }
+	table#cartitem tbody td { display: block; padding: .5rem; min-width:310px;}
+	table#cartitem tbody tr td:first-child { background: rgb(235, 234, 234); color: rgb(37, 36, 36); }
+	table#cartitem tbody td:before {
+		content: attr(data-th); font-weight: bold;
+		display: inline-block; width: 8rem;
+	}
+	
+	
+	
+	table#cartitem tfoot td{display:block; }
+	table#cartitem tfoot td .btn{display:block;}
+	
+}
