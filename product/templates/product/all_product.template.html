@@ -4,15 +4,16 @@
 {%block content%}
 
 {% if request.user.is_staff %}
-<table>
  <h1>Welcome {{request.user}} here</h1>
  <form method="GET">
  {{search_form|crispy}}
  <input type="submit" value="Search"/>
  </form>
- <div class="container-fluid">
+    <div class="container-fluid">
+        <div class="mb-4">
 			<div class="card-deck">
-				{%for product in product%}  
+				{%for product in product%}
+                <div class="col-12 col-md-4 col-lg-2"> 
 				<div class="card">
                 <div class="thumbnail">
                     {%if product.image%}
@@ -33,23 +34,28 @@
                         </div>
 					</div>
 				</div>
+                </div>
 				{%endfor%}
 			</div>
 		</div>
+    </div>
  
 {%endif%}
 
 {% if request.user.is_user or not request.user.is_staff %}
-<table>
+
  <form method="GET">
  {{search_form|crispy}}
  <input type="submit" value="Search"/>
  </form>
+ 
   
 <!--Start of Card-->
     <div class="container-fluid">
+        <div class="mb-4">
 			<div class="card-deck">
-				{%for product in product%}  
+				{%for product in product%}
+                <div class="col-12 col-md-4 col-lg-2"> 
 				<div class="card">
                 <div class="thumbnail">
                     {%if product.image%}
@@ -68,9 +74,12 @@
 				</div>
                         </div>
 					</div>
+                
 				</div>
+            </div>
 				{%endfor%}
 			</div>
+        </div>
 		</div>
 {%endif%}
 {%endblock%}

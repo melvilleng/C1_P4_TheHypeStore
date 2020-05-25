@@ -13,7 +13,18 @@
 				<div class="card-body">
 					<h1 class="card-title">{{product.name}}</h1>
 					<p class="card-text">Price: {{product.price}}</p>
-					<p class="card-text"> Description: {{product.description}}</p>
+                    <div class="container">
+                    <label>Description:</label>
+					<p class="card-text">{{product.description}}</p>
+                    </div>
+                    <div class="card-body">
+                    <label for="sizes">Choose your Size:</label>
+                    <select id="sizes">
+                    {%for s in product.sizes.all%}
+                        <option value="{{s}}">{{s}}</option>
+                    {%endfor%}
+                    </select>
+                    </div>
 					<p class="card-text"> Size: {{product.size}}</p>
 				</div>
 				<div>

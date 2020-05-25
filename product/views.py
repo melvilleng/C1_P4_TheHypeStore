@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect,reverse,get_object_or_404
 from .forms import ProductForm, SearchForm
-from .models import Product, Category
+from .models import Product, Category, Size
 from reviews.forms import ReviewForm
 from django.db.models import Q
 from django.contrib.admin.views.decorators import staff_member_required
@@ -47,7 +47,7 @@ def create_product(request):
 
         if create_form.is_valid():
             create_form.save()
-            return redirect(reverse(index))
+            return redirect(reverse(all_product))
         else:
             return render(request, 'product/create_product.template.html',{
                 'form': create_form
@@ -67,7 +67,7 @@ def update_product(request,product_id):
         form_for_product =ProductForm(request.POST,instance=update_product)
         if form_for_product.is_valid():
             form_for_product.save()
-            return redirect(reverse(index))
+            return redirect(reverse(all_product))
         else:
             return render(request, 'product/update_product.template.html', {
                 "form": form_for_product
@@ -84,7 +84,7 @@ def delete_product(request,product_id):
 
     if request.method == 'POST':
         product_to_delete.delete()
-        return redirect(index)
+        return redirect(all_product)
 
     else:
         return render(request, 'product/product_delete.template.html',{

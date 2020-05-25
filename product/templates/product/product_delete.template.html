@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+{%extends 'base.template.html' %}
+
+
+{%block content%}
 <body>
     <h1> Delete {{product.name}}</h1>
     <p>Are you sure?</p>
@@ -15,4 +11,4 @@
         <a href="{%url 'show_product_route'%}">No</a>
     </form>
 </body>
-</html>
+{%endblock%}
