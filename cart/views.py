@@ -29,7 +29,7 @@ def add_to_cart(request, product_id):
     
     #save the session
     request.session['shopping_cart'] = cart
-    return redirect(reverse('show_product_route'))
+    return redirect(reverse('show_cart_route'))
 
 @login_required
 def show_cart(request):

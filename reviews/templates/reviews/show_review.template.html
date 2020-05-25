@@ -3,15 +3,21 @@
 
 <article>
 {%for review in reviews%}
-    <h1>{{review.title}}</h1>
-    <h2>For: {{review.product.name}}</h2>
-    <h3>By: {{review.user.username}}</h3>
-    <section class="card">
-        <div class="card-text">
-            {{review.content}}
-        </div>
-    </section>
+ <div class="card">
+  <div class="card-header">
+    <h3>{{review.title}}</h3>
+    <h5>For: {{review.product.name}}</h5>
+    <h5>By: {{review.user.username}}</h5>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p> {{review.content}}</p>
+      
+    </blockquote>
+  </div>
+</div>
 {%endfor%}
 </article>
 
 {%endblock%}
+
