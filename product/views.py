@@ -95,7 +95,7 @@ def delete_product(request,product_id):
 def product_details(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     review_form = ReviewForm()
-    return render(request,'product/one_product.template.html',{
+    return render(request, 'product/one_product.template.html', {
         'product': product,
         'form': review_form
     })
