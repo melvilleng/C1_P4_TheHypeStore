@@ -19,6 +19,7 @@ class Order(models.Model):
     address_2 = models.CharField(max_length=150, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     order_total = models.DecimalField(max_digits=10,decimal_places=2,default=0)
+    grand_total = models.DecimalField(max_digits=10,decimal_places=2,default=0)
 
     def _generate_order_number(self):
 
