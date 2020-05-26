@@ -1,9 +1,10 @@
 from django.shortcuts import render,HttpResponse,redirect,reverse,get_object_or_404
 from .forms import ProductForm, SearchForm
-from .models import Product, Category, Size
+from .models import Product, Category
 from reviews.forms import ReviewForm
 from django.db.models import Q
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -15,7 +16,7 @@ def index(request):
 def all_product(request):
     product = Product.objects.all()
     if request.GET:
-        
+
         queries = ~Q(pk__in=[])
 
         # if a name is typed, add it to the query

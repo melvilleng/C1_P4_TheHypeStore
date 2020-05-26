@@ -7,41 +7,49 @@
 	<div class="row" style="background-color:white;">
 		<div class="col-12 col-md-6 col-lg-4 offset-lg-2 mt-3">
 			{%if product.image%}
-			<img src="{{product.image.cdn_url}}"/>
+			<img src="{{product.image.cdn_url}}" height="100%" width="100%"/>
         {%endif%}
         </div>
 			<div class="col-12 col-md-6 col-lg-4">
 				<div class="card-body">
 					<h1 class="card-title">{{product.name}}</h1>
-					<p class="card-text">Price: {{product.price}}</p>
-                    <label>Description:</label>
+                    <br>
+					<h5 class="card-text">Price:${{product.price}}</h5>
+                    <br>
+                    <label><b>Description:</b></label>
 					<p class="card-text">{{product.description}}</p>
-                    <div class="card-body">
-                    <label for="sizes">Choose your Size:</label>
-                    <select id="sizes">
-                    {%for s in product.sizes.all%}
-                        <option value="{{s}}">{{s}}</option>
-                    {%endfor%}
-                    </select>
+                    
+                    <div class="form-row">
+                        {%with product.has_sizes as size%}
+                        {%if size%}
+                            <div class="col-12">
+                            <p>Size:</p>
+                            <select class="form-control rounded-0 w-50" name="product_size" id="product_size">
+                                <option value="xs">XS</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="xl">XL</option>
+                            </select>
+                            </div>
+                        {%endif%}
+                        {%endwith%}
                     </div>
-					<p class="card-text"> Size: {{product.size}}</p>
-				</div>
-				<div>
-					<a class="btn btn-outline-primary active"
+                    </div>
+                    <div class="row" style="justify-content:space-around;">
+                    <a class="btn btn-outline-danger active" href="{% url 'show_allproduct_route'%}">Back</a>
+                    <a class="btn btn-outline-primary active"
 						href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
-				</div>
-                <br>
-				<div>
-					<a class="btn btn-outline-danger active" href="{% url 'show_allproduct_route'%}">Back to Product</a>
+                    </div>
 				</div>
 			</div>
 		</div>
-    </div>
-
-	<!-- <form method="POST" action="{% url 'create_review_route' product_id=product.id %}">
+<br>
+<h2>Review</h2>
+	<form method="POST" action="{% url 'create_review_route' product_id=product.id %}">
 		{% csrf_token %}
 		{{ form|crispy}}
 		<input type="submit"/>
-</form> -->
+</form>
 
 {%endblock%}

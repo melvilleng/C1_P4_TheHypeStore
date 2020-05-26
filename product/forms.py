@@ -8,5 +8,4 @@ class ProductForm(forms.ModelForm):
         fields = 'name', 'price', 'description', 'image','category'
 
 class SearchForm(forms.Form):
-    name = forms.CharField(max_length=150, required=False)
     category = forms.ModelChoiceField(queryset=Category.objects.all(),required=False)

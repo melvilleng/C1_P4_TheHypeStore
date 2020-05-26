@@ -14,6 +14,7 @@
 						<th style="width:10%"></th>
 					</tr>
 				</thead>
+                {% if cart.items %}
                 {%for key, cart_product in cart.items %}
 				<tbody>
 					<tr>
@@ -42,9 +43,21 @@
 						</td>
 					</tr>
 				</tbody>
+                 {%endfor%}
+                {%else%}
+                <tbody>
+					<tr>
+						<td data-th="Product">
+							<div class="row">
+						 <h3 lead class="mb-5"> Your bag is empty</h3>
+                         </div>
+                         </td>	
+					</tr>
+				</tbody>
+                   
+                {%endif%}
 				<tfoot>
-                {%endfor%}
-
+            
 					<tr>
 						<td><a href="{% url 'show_allproduct_route'%}" class="btn btn-info"><i class="fa fa-angle-left"></i> Continue
 								Shopping</a></td>

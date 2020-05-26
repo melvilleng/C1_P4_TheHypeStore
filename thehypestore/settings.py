@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'accounts',
     'cart',
     'reviews',
+    'checkout',
 
     #my apps
     'product'
@@ -161,8 +162,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
-if "DEVELOP" in os.environ:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 

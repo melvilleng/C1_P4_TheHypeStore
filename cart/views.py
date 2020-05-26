@@ -31,6 +31,7 @@ def add_to_cart(request, product_id):
     request.session['shopping_cart'] = cart
     return redirect(reverse('show_cart_route'))
 
+
 @login_required
 def show_cart(request):
     #Get the session
