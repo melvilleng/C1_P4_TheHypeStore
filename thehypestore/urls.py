@@ -27,5 +27,6 @@ urlpatterns = [
     path('product/delete_product/<product_id>',product.views.delete_product, name= 'delete_product_route'),
     path('cart/', include('cart.urls')),
     path('reviews/', include('reviews.urls')),
-    path('product/product_details/<product_id>', product.views.product_details, name='product_details')
+    path('product/product_details/<product_id>', product.views.product_details, name='product_details'),
+    path('checkout/', include('checkout.urls'))
 ]

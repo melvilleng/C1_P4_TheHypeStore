@@ -167,6 +167,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+STRIPE_PUBLISHABLE_KEY= os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY= os.environ.get('STRIPE_SECRET_KEY')
+
+
 UPLOADCARE= {
     "pub_key": os.environ.get('UPLOADCARE_PUBLIC_KEY'),
     "secret": os.environ.get('UPLOADCARE_SECRET_KEY'),
