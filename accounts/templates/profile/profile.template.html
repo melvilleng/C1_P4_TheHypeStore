@@ -1,0 +1,11 @@
+{%extends 'base.template.html' %}
+{%load static%}
+{%load crispy_forms_tags %}
+
+{%block content%}
+
+{{userprofile.city}}
+{{userprofile.user.username}}
+{{userprofile.user.first_name}}
+
+{%endblock%}

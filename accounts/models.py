@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     address = models.CharField(max_length=255, blank=False)
     address_2 = models.CharField(max_length=150, blank=True)
+    city = models.CharField(max_length=60,blank=False)
+    zipcode = models.CharField(max_length=30, blank=False)
+    country = models.CharField(max_length=100,blank=False)
     contact = models.PositiveIntegerField(blank=False)
     user =models.ForeignKey(User, on_delete=models.CASCADE)
 
