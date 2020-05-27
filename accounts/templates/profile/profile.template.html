@@ -3,52 +3,86 @@
 
 {%block content%}
 <div class="container" style="background-color:grey">
-    <div class="row">
-        <div class="col">
-        <h2 class="logo-font mb-4 mt-4">User Profile</h2>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col">
+			<h2 class="logo-font mb-4 mt-4">User Profile</h2>
+		</div>
+	</div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-6">
-<ul>
-<li>{{userprofile.user.username}}</li>
-<li>{{userprofile.user.first_name}}</li>
-<li>{{userprofile.user.last_name}}</li>
-<li>{{userprofile.address}}</li>
-<li>{{userprofile.address}}</li>
-<li>{{userprofile.address_2}}</li>
-<li>{{userprofile.zipcode}}</li>
-<li>{{userprofile.city}}</li>
-<li>{{userprofile.country}}</li>
-<li>{{userprofile.contact}}</li>
-</ul>
-        </div>
-        <div class="col-12 col-lg-6">
-        <h2>Order History</h2>
-            <div class="order-history" table-responsive>
-                <table class="table table-sm table-borderless">
-                    <thead>
-                        <tr>
-                            <th>Order Number</th>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {% for product in product %}
-                            <tr>
-                            <th>{{product}}</th>
-                            <th>{{product.product.name}}</th>
-                            <th>{{product.product.price}}</th>
-                            {%endfor%}
-                            </tr>
-                    </tbody>
-                </table>
+	<div class="row">
+		<div class="col-12 col-lg-6">
+			<table class="table table-sm table-borderless">
+				<thead>
+					<tr>
+						<th>Personal Information</th>
 
-            </div>
-        </div>
-    </div>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Username: </th>
+						<th>{{userprofile.user.username}}</th>
+					</tr>
+					<tr>
+						<th>First Name: </th>
+						<th>{{userprofile.user.first_name}}</th>
+					</tr>
+					<tr>
+						<th>Last Name: </th>
+						<th>{{userprofile.user.last_name}}</th>
+					</tr>
+					<tr>
+						<th>Address: </th>
+						<th>{{userprofile.address}}</th>
+					</tr>
+					<tr>
+						<th>Address 2: </th>
+						<th>{{userprofile.address_2}}</th>
+					</tr>
+					<tr>
+						<th>Zipcode: </th>
+						<th>{{userprofile.zipcode}}</th>
+					</tr>
+					<tr>
+						<th>City: </th>
+						<th>{{userprofile.city}}</th>
+					</tr>
+					<tr>
+						<th>Country: </th>
+						<th>{{userprofile.country}}</th>
+					</tr>
+					<tr>
+						<th>Contact: </th>
+						<th>{{userprofile.contact}}</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-12 col-lg-6">
+			<h2>Order History</h2>
+			<div class="order-history" table-responsive>
+				<table class="table table-sm table-borderless">
+					<thead>
+						<tr>
+							<th>Order Number</th>
+							<th>Product Name</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for product in product %}
+						<tr>
+							<th>{{product}}</th>
+							<th>{{product.product.name}}</th>
+							<th>{{product.product.price}}</th>
+							{%endfor%}
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
 </div>
 {%endblock%}
