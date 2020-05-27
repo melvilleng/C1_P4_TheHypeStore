@@ -18,6 +18,11 @@
                     <br>
                     <label><b>Description:</b></label>
 					<p class="card-text">{{product.description}}</p>
+                    <div id="thesizechart" title="the size chart">Sizes Chart</div>
+                    <div id="myModal" class="modal">
+                    <i class="fas fa-window-close" id="closeM"></i>
+                    <img class="modal-image" src="{% static 'image/sizechart.PNG'%}" />
+                    </div>
                     
                     <div class="form-row">
                         {%with product.has_sizes as size%}
@@ -44,6 +49,7 @@
 				</div>
 			</div>
 		</div>
+
 <br>
 <h2>Review</h2>
 	<form method="POST" action="{% url 'create_review_route' product_id=product.id %}">

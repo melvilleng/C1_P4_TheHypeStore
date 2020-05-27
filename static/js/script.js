@@ -16,3 +16,14 @@ window.addEventListener("scroll", function(){
     }
 })
 
+ 
+$('#thesizechart').click(function(){
+  $('#myModal').show();
+});
+ 
+let close = $('#closeM')[0];
+ 
+close.onclick = function(){
+  $('#myModal').hide();
+}
+
