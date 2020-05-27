@@ -39,6 +39,29 @@ a{
     color:black;
 }
 
+#bringmetotop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    border: none; 
+    outline: none; 
+    background-color:black; 
+    color: yellow; 
+    cursor: pointer; 
+    outline: :none; 
+    border-radius: 50%; 
+  
+}
+
+#bringmetotop:hover {
+    background-color:white;
+    color:black; 
+}
+
 @media screen and (max-width: 992px) {
     table#cartitem tbody td .form-control{
 		display: inline !important;

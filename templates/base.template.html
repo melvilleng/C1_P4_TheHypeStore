@@ -116,6 +116,8 @@
 </head>
 
 <body>
+    <button id="bringmetotop"><i class="fas fa-arrow-circle-up"></i></button>
+
 	{%if messages %}
 	{%for message in messages%}
 	<div class="alert alert-success">{{message}}</div>
@@ -141,7 +143,7 @@
 						<div class="col-md-6 mt-md-0 mt-3">
 
 							<!-- Content -->
-							<h5 class="text-uppercase"><b>Search</b></h5>
+							<h5 class="text-uppercase"><b>Search By Name:</b></h5>
 							<form method="GET" action="{%url 'show_allproduct_route'%}">
 								<div class="input-group w-100">
 									<input class="form-control border border-black rounded-0" type="text" name="name" placeholder="Search By Name">
@@ -203,6 +205,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 	</script>
+    <script src="{% static 'js/script.js' %}"></script>
 	{%endblock%}
 </body>
 
