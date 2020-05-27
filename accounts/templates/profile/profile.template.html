@@ -32,13 +32,19 @@
                     <thead>
                         <tr>
                             <th>Order Number</th>
-                            <th>Order Number</th>
-                            <th>{{product.price}}</th>
-                            {% for product in product%}
-                            <th>{{product.name}}</th>
-                            {%endfor%}
+                            <th>Product Name</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
+                    <tbody>
+                            {% for product in product %}
+                            <tr>
+                            <th>{{product}}</th>
+                            <th>{{product.product.name}}</th>
+                            <th>{{product.product.price}}</th>
+                            {%endfor%}
+                            </tr>
+                    </tbody>
                 </table>
 
             </div>

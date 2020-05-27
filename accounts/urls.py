@@ -4,6 +4,5 @@ import accounts.views
 
 
 urlpatterns = [
-    path('', accounts.views.profile, name= 'profile'),
-    path('', accounts.views.view_order, name= 'view_profile')
+    path('', accounts.views.profile, name= 'profile')
 ]

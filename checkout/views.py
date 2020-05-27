@@ -57,7 +57,6 @@ def checkout_success(request):
         )
         newproduct.save()
         
-
     request.session['shopping_cart'] = {}
     messages.success(request, f"Your Order has been place")
 
