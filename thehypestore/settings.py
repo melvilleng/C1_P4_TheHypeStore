@@ -28,7 +28,7 @@ SECRET_KEY = '6i!o9w4d4k^j%^yux55^u=ca!&((!3!*su-od3d5_zqot-9$n@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['mel-thehypestore.herokuapp.com', '*']
 
 
 # Application definition
@@ -163,6 +163,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
