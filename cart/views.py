@@ -19,6 +19,7 @@ def add_to_cart(request, product_id):
             'id': product_id,
             'name': product.name,
             'cost': float(product.price),
+            'each_cost': float(product.price),
             'qty': 1,
         }
         messages.success(request, f"Product:{product.name} has been added")
@@ -27,10 +28,10 @@ def add_to_cart(request, product_id):
     else:
         cart[product_id]['qty'] += 1
         updated_qty= cart[product_id]['qty']
-        price = float(cart[product_id]['cost'])
-        total = (price*updated_qty)
-        cart[product_id]['cost'] = str(total)
-    
+        OG_price = float(cart[product_id]['each_cost'])
+        price = (OG_price*updated_qty)
+        cart[product_id]['cost'] = str(price)
+
     #save the session
     request.session['shopping_cart'] = cart
     return redirect(reverse('show_cart_route'))
@@ -40,16 +41,19 @@ def add_to_cart(request, product_id):
 def show_cart(request):
     #Get the session
     cart = request.session.get('shopping_cart')
-    total_cost = 0
-    for item_cost in cart:
-        each_item = cart[item_cost]['qty']
-        each_cost = cart[item_cost]['cost']
-        total_cost += float(each_cost)
+    if cart:
+        total_cart = 0
+        for each_item in cart:
+            each_item_cost = cart[each_item]['cost']
+            total_cart += float(each_item_cost)
+
         
-    return render(request, 'cart/show_cart.template.html',{
-        'cart': cart,
-        'total_cost': total_cost
-    })
+        return render(request, 'cart/show_cart.template.html',{
+            'cart': cart,
+            'total_cart': total_cart
+            })
+    else:
+        return render(request, 'cart/empty_cart.template.html')
 
 @login_required
 def delete_from_cart(request, product_id):
@@ -64,7 +68,12 @@ def delete_from_cart(request, product_id):
 def update_quantity(request,product_id):
     cart = request.session.get('shopping_cart')
     if product_id in cart:
-        cart[product_id]['qty'] = request.POST['qty']
+        cart[product_id]['qty'] = int(request.POST['qty'])
+
+        newer_qty= int(request.POST['qty'])
+        OG_price = float(cart[product_id]['each_cost'])
+        update_price = (OG_price*newer_qty)
+        cart[product_id]['cost'] = (update_price)
         request.session['shopping_cart'] = cart
         messages.success(request, f"Quantity has been updated")
     return redirect(reverse('show_cart_route'))
