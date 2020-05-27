@@ -1,10 +1,12 @@
-from django.shortcuts import render,get_object_or_404,reverse,HttpResponse
+from django.shortcuts import render,get_object_or_404,reverse,HttpResponse,redirect
 from django.conf import settings
 from product.models import Product
 from django.contrib.sites.models import Site
 import stripe
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
 
-
+# endpoint_secret = settings.SIGNING_SECRET
 # Create your views here.
 
 def checkout(request):
@@ -43,8 +45,39 @@ def checkout(request):
 def checkout_success(request):
     # reset the shopping cart
     request.session['shopping_cart'] = {}
-    return HttpResponse("Checkout successful")
+    messages.success(request, f"Your Order has been place")
+    return redirect(reverse('show_allproduct_route'))
+    
 
 
 def checkout_cancelled(request):
-    return HttpResponse("Checkout cancelled")
+    return redirect(reverse('show_cart_route'))
+
+@csrf_exempt
+def handle_payment_completed(request):
+  payload = request.body
+  sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+  event = None
+
+  try:
+    event = stripe.Webhook.construct_event(
+      payload, sig_header,settings.SIGNING_SECRET
+    )
+  except ValueError as e:
+    # Invalid payload
+    return HttpResponse(status=400)
+  except stripe.error.SignatureVerificationError as e:
+    # Invalid signature
+    return HttpResponse(status=400)
+
+  # Handle the checkout.session.completed event
+  if event['type'] == 'checkout.session.completed':
+    session = event['data']['object']
+
+    # Fulfill the purchase...
+    handle_checkout_session(session)
+
+  return HttpResponse(status=200)
+
+  def handle_checkout_session(session):
+      print(session)

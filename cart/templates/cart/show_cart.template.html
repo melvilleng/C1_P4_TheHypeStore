@@ -63,7 +63,12 @@
 								Shopping</a></td>
 						<td colspan="2" class="hidden-xs"></td>
 						<td class="hidden-xs text-center"><strong>{{cart.items.cost}}</strong></td>
-						<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                        {% if cart.items %}
+						<td><a href="{% url 'checkout'%}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                        </td>
+                        {%else%}
+                        <td><a href="{% url 'show_cart_route'%}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                        {%endif%}
 						</td>
 					</tr>
 				</tfoot>
