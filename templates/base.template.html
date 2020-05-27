@@ -73,10 +73,11 @@
                     <li class="nav-item active">
 						<a class="nav-link" href="{%url 'account_logout' %}"><b>Logout</b></a>
 					</li>
-                    <li class="nav-item active">
-						<a class="nav-link" href="{%url 'show_cart_route' %}"><i class="fas fa-shopping-cart"></i><b>Cart</b></a>
-					</li>
+                
                 {%elif request.user.is_authenticated %}
+                    <li class="nav-item active">
+						<a class="nav-link" href="{%url 'profile' %}"><b>Profile</b></a>
+					</li>
                      <li class="nav-item active">
 						<a class="nav-link" href="{%url 'account_logout' %}"><b>Logout</b></a>
 					</li>

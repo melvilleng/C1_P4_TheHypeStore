@@ -43,6 +43,7 @@
 						</td>
 					</tr>
 				</tbody>
+                
                  {%endfor%}
                 {%else%}
                 <tbody>
@@ -56,13 +57,14 @@
 				</tbody>
                    
                 {%endif%}
+            
 				<tfoot>
             
 					<tr>
 						<td><a href="{% url 'show_allproduct_route'%}" class="btn btn-info"><i class="fa fa-angle-left"></i> Continue
 								Shopping</a></td>
 						<td colspan="2" class="hidden-xs"></td>
-						<td class="hidden-xs text-center"><strong>{{cart.items.cost}}</strong></td>
+                        <td class="hidden-xs text-center"><strong>Total {{total_cost}}</strong></td>
                         {% if cart.items %}
 						<td><a href="{% url 'checkout'%}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
                         </td>

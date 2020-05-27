@@ -26,6 +26,10 @@ def add_to_cart(request, product_id):
     #product already in cart
     else:
         cart[product_id]['qty'] += 1
+        updated_qty= cart[product_id]['qty']
+        price = float(cart[product_id]['cost'])
+        total = (price*updated_qty)
+        cart[product_id]['cost'] = str(total)
     
     #save the session
     request.session['shopping_cart'] = cart
@@ -36,8 +40,15 @@ def add_to_cart(request, product_id):
 def show_cart(request):
     #Get the session
     cart = request.session.get('shopping_cart')
+    total_cost = 0
+    for item_cost in cart:
+        each_item = cart[item_cost]['qty']
+        each_cost = cart[item_cost]['cost']
+        total_cost += float(each_cost)
+        
     return render(request, 'cart/show_cart.template.html',{
-        'cart': cart
+        'cart': cart,
+        'total_cost': total_cost
     })
 
 @login_required

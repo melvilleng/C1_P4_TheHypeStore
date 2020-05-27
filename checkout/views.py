@@ -1,7 +1,7 @@
-from django.shortcuts import render,get_object_or_404,reverse,HttpResponse,redirect
+from django.shortcuts import render, get_object_or_404, reverse, HttpResponse, redirect
 from django.conf import settings
 from product.models import Product
-from accounts.models import Order, UserProfile
+from accounts.models import Order
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 import stripe
@@ -43,7 +43,6 @@ def checkout(request):
         "session_id": session.id,
         "public_key": settings.STRIPE_PUBLISHABLE_KEY
     })
-
 def checkout_success(request):
     # reset the shopping cart
     cart = request.session.get('shopping_cart',{})
@@ -52,17 +51,15 @@ def checkout_success(request):
     for id, product in cart.items():
         product_object = Product.objects.get(id=id)
         newproduct = Order(
-            user = customer,
-            product = product_object,
+            user=customer,
+            product=product_object,
         )
         newproduct.save()
-        
+
     request.session['shopping_cart'] = {}
     messages.success(request, f"Your Order has been place")
 
-
-    return redirect(reverse('show_allproduct_route'))
-    
+    return redirect(reverse('profile'))
 
 
 def checkout_cancelled(request):
