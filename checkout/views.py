@@ -1,6 +1,8 @@
 from django.shortcuts import render,get_object_or_404,reverse,HttpResponse,redirect
 from django.conf import settings
 from product.models import Product
+from accounts.models import Order, UserProfile
+from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 import stripe
 from django.views.decorators.csrf import csrf_exempt
@@ -44,8 +46,22 @@ def checkout(request):
 
 def checkout_success(request):
     # reset the shopping cart
+    cart = request.session.get('shopping_cart',{})
+    customer = User.objects.get(username=request.user)
+
+    for id, product in cart.items():
+        product_object = Product.objects.get(id=id)
+        newproduct = Order(
+            user = customer,
+            product = product_object,
+        )
+        newproduct.save()
+        
+
     request.session['shopping_cart'] = {}
     messages.success(request, f"Your Order has been place")
+
+
     return redirect(reverse('show_allproduct_route'))
     
 
