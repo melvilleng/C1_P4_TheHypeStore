@@ -13,51 +13,51 @@
 			<div class="col-12 col-md-6 col-lg-4">
 				<div class="card-body">
 					<h1 class="card-title">{{product.name}}</h1>
-                    <br>
+					<br>
 					<h5 class="card-text">Price:${{product.price}}</h5>
-                    <br>
-                    <label><b>Description:</b></label>
+					<br>
+					<label><b>Description:</b></label>
 					<p class="card-text">{{product.description}}</p>
-                    <div id="thesizechart" title="the size chart">Sizes Chart</div>
-                    <div id="myModal" class="modal">
-                    <i class="fas fa-window-close" id="closeM"></i>
-                    <img class="modal-image" src="{% static 'image/sizechart.PNG'%}" />
-                    
+					<div id="thesizechart" title="the size chart">Sizes Chart</div>
+					<div id="myModal" class="modal">
+						<i class="fas fa-window-close" id="closeM"></i>
+						<img class="modal-image" src="{% static 'image/sizechart.PNG'%}" />
+
                     </div>
-                  
-                    
-                    <div class="form-row">
-                        {%with product.has_sizes as size%}
-                        {%if size%}
-                            <div class="col-12">
-                            <p>Size:</p>
-                            <select class="form-control rounded-0 w-50" name="product_size" id="product_size">
+
+
+						<div class="form-row">
+							{%with product.has_sizes as size%}
+							{%if size%}
+							<div class="col-12">
+								<p>Size:</p>
+								<select class="form-control rounded-0 w-50" name="product_size" id="product_size">
                                 <option value="xs">XS</option>
                                 <option value="s">S</option>
                                 <option value="m">M</option>
                                 <option value="l">L</option>
                                 <option value="xl">XL</option>
                             </select>
-                            </div>
-                        {%endif%}
-                        {%endwith%}
-                    </div>
-                    </div>
-                    <div class="row" style="justify-content:space-around;">
-                    <a class="btn btn-outline-danger active" href="{% url 'show_allproduct_route'%}">Back</a>
-                    <a class="btn btn-outline-primary active"
-						href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
-                    </div>
+							</div>
+							{%endif%}
+							{%endwith%}
+						</div>
+					</div>
+					<div class="row" style="justify-content:space-around;">
+						<a class="btn btn-outline-danger active" href="{% url 'show_allproduct_route'%}">Back</a>
+						<a class="btn btn-outline-primary active"
+							href="{% url 'add_to_cart_route' product_id=product.id %}">Add to cart</a>
+					</div>
 				</div>
 			</div>
 		</div>
 
-<br>
-<h2>Review</h2>
-	<form method="POST" action="{% url 'create_review_route' product_id=product.id %}">
-		{% csrf_token %}
-		{{ form|crispy}}
-		<input type="submit"/>
+		<br>
+		<h2>Review</h2>
+		<form method="POST" action="{% url 'create_review_route' product_id=product.id %}">
+			{% csrf_token %}
+			{{ form|crispy}}
+			<input type="submit"/>
 </form>
 
-{%endblock%}
+			{%endblock%}

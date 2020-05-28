@@ -4,86 +4,88 @@
 {%block content%}
 
 {% if request.user.is_staff %}
- <h1>Welcome {{request.user}} here</h1>
- <form method="GET">
- {{search_form|crispy}}
- <input type="submit" value="Search"/>
+<h1>Welcome {{request.user}} here</h1>
+<form method="GET">
+	{{search_form|crispy}}
+	<input type="submit" value="Search"/>
  </form>
-    <div class="container-fluid">
-        <div class="mb-4">
+	<div class="container-fluid">
+		<div class="mb-4">
 			<div class="card-deck">
 				{%for product in product%}
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3"> 
-				<div class="card">
-                
-                    {%if product.image%}
-					<img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+				<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+					<div class="card">
+
+						{%if product.image%}
+						<img class="card-img-top" src="{{product.image}}" alt="Card image cap">
                     {%endif%}
-               
-					<div class="card-body">
-						<h3 class="card-title"><b>{{product.name}}</b></h3>
-						<h6 class="card-text">
-                         <h4>${{product.price}}</h4>
-						</h6>
-                        <br>
-                      <div class="row" style="justify-content:space-around;">
-                        <a class="btn btn-outline-danger active" href="{% url 'delete_product_route' product_id=product.id %}"
-                        role="button"><b>Delete</b></a>
-                        <a class="btn btn-outline-success active" href="{% url 'update_product_route' product_id=product.id %}"  
-                        role="button"><b>Edit</b></a>
-                        </div>
+
+						<div class="card-body">
+							<h3 class="card-title"><b>{{product.name}}</b></h3>
+							<h6 class="card-text">
+								<h4>${{product.price}}</h4>
+							</h6>
+							<br>
+							<div class="row" style="justify-content:space-around;">
+								<a class="btn btn-outline-danger active"
+									href="{% url 'delete_product_route' product_id=product.id %}"
+									role="button"><b>Delete</b></a>
+								<a class="btn btn-outline-success active"
+									href="{% url 'update_product_route' product_id=product.id %}"
+									role="button"><b>Edit</b></a>
+							</div>
+						</div>
+						<div class="row" style="justify-content:space-around;">
+							<div class="card-footer text-center">
+								<a href="{% url 'product_details' product_id=product.id %}">View More</a>
+							</div>
+						</div>
 					</div>
-                    <div class="row" style="justify-content:space-around;">
-                        <div class="card-footer text-center">
-                        <a href="{% url 'product_details' product_id=product.id %}">View More</a>
 				</div>
-                        </div>
-				</div>
-                </div>
 				{%endfor%}
 			</div>
 		</div>
-    </div>
- 
-{%endif%}
+	</div>
 
-{% if request.user.is_user or not request.user.is_staff %}
+	{%endif%}
 
- <form method="GET">
- {{search_form|crispy}}
- <input type="submit" value="Search"/>
+	{% if request.user.is_user or not request.user.is_staff %}
+
+	<form method="GET">
+		{{search_form|crispy}}
+		<input type="submit" value="Search"/>
  </form>
- 
-  
-<!--Start of Card-->
-    <div class="container-fluid">
-        <div class="mb-4">
-			<div class="card-deck">
-				{%for product in product%}
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3"> 
-				<div class="card">
-                
-                    {%if product.image%}
-					<img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+
+
+		<!--Start of Card-->
+		<div class="container-fluid">
+			<div class="mb-4">
+				<div class="card-deck">
+					{%for product in product%}
+					<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+						<div class="card">
+
+							{%if product.image%}
+							<img class="card-img-top" src="{{product.image}}" alt="Card image cap">
                     {%endif%}
-               
-					<div class="card-body">
-						<h3 class="card-title"><b>{{product.name}}</b></h3>
-						<h6 class="card-text">
-                         <h4>${{product.price}}</h4>
-						</h6>
-                        <br>
+
+							<div class="card-body">
+								<h3 class="card-title"><b>{{product.name}}</b></h3>
+								<h6 class="card-text">
+									<h4>${{product.price}}</h4>
+								</h6>
+								<br>
 					</div>
-                    <div class="row" style="justify-content:space-around;">
-                        <div class="card-footer text-center">
-                        <a href="{% url 'product_details' product_id=product.id %}">View More</a>
+								<div class="row" style="justify-content:space-around;">
+									<div class="card-footer text-center">
+										<a href="{% url 'product_details' product_id=product.id %}">View More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						{%endfor%}
+					</div>
 				</div>
-                        </div>
-				</div>
-                </div>
-				{%endfor%}
 			</div>
-		</div>
-    </div>
-{%endif%}
-{%endblock%}
+			{%endif%}
+			{%endblock%}

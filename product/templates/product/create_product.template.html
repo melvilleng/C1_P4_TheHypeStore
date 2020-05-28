@@ -6,9 +6,9 @@
 {%endblock%}
 
 {%block content%}
-    <form method="POST">
-    {% csrf_token %}
-    {{ form|crispy}}
-    <input type="Submit"/>
+<form method="POST">
+	{% csrf_token %}
+	{{ form|crispy}}
+	<input type="Submit"/>
     </form>
-{%endblock%}
+	{%endblock%}

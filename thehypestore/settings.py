@@ -27,7 +27,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = '6i!o9w4d4k^j%^yux55^u=ca!&((!3!*su-od3d5_zqot-9$n@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['mel-thehypestore.herokuapp.com', '*']
 

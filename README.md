@@ -97,7 +97,6 @@ Below are a list of framework, programming languages and tools used for the webs
 * Python
 * Django
 * Postgres
-* Google Fonts
 * Font Awesome
 * Gitpod
 * Git
