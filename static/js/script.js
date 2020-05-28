@@ -22,8 +22,6 @@ $('#thesizechart').click(function(){
 });
  
 let close = $('#closeM')[0];
- 
 close.onclick = function(){
   $('#myModal').hide();
 }
-

@@ -1,39 +1,48 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+# TheHypeShop Marketplace #
 
-Welcome Melville,
+### Data-Centric Development Milestone Project 4 ###
+By: Melville Ng
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+## Demo ##
+Website site link can be found [here]( https://mel-thehypestore.herokuapp.com/)
 
-## Gitpod Reminders
+## Aim ##
+The aim of this project is to build an E-commerce website with Django. Through the website, user is able to buy apparel. 
+Currently, I am selling my own apparel so creating a website for it. I can reach out to more target audience. 
+The Target audience are people like me who like streetwear product. Furthermore, creating this website can help me to 
+reach out to more people and gain more reputation in Singapore or International.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## UI ##
+The intention to make the website modern looking, easy to navigate and comfortable on the eyes. 
+Colours of white and grey are chosen to suit the different colourway of the product. 
+Different colour of the button is used to make the site look livelier.
 
-`python3 -m http.server`
+## UX ##
+The website can store what the shop owner wants to sell to be available to view by customer. 
+The website also able to create an account.
+Bootstrap breakpoints are responsive for small, medium and large screens for the navigation bar. 
+When the screen, reaches medium or small screen the navigation bar will change to be a hamburger icon on the top right corner of the website. 
+Drop down menu will appear when u press the hamburger icon which will link you to different pages of the website. 
+On large screen device the navigation bar will display all the link at the top.
 
-A blue button should appear to click: *Make Public*,
 
-Another blue button should appear to click: *Open Browser*.
+## ER Diagram ##
+ER Diagram can be found [here](https://github.com/melvilleng/bnsmarketplace/blob/master/misc/image.png)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: *Make Public*,
-
-Another blue button should appear to click: *Open Browser*.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
-
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+## User Stories ##
+* As a Customer - I want to be able to see all the products so that I can buy.
+* As a Customer – I want to be able to view individual product details so that I can know the price, description, look at the image and available sizes.
+* As a Customer – I want to sort a specific category so that I can see the difference category product.
+* As a Customer – I want to be able to search a product by its name so that I can easily find it.
+* As a Customer – I want to be able to select size of the product when buying so that I can buy size I want.
+* As a Customer – I want to be able to view the item in my cart so that I can tell the total cost of purchase. 
+* As a Customer – I want to be able to adjust the quantity of the item in my cart so that I can change the quantity before buying.
+* As a Customer – I want to fill safe and secure of my personal and payment details so that I can provide the require information to purchase.
+* As a Customer – I want to be able to write a review so that I can leave a review for the shop.
+* As a Site User – I want to be able to register an account so that I view my profile.
+* As a Site User – I want to be able to login and log out so that I can access my profile.
+* As a Site User – I want to be able reset password so that if I forgot my password I can reset it.
+* As a Site User – I want to be able to view my profile so that I can view my order history and personal detail.
+* As a Store Owner – I want to be able to add a product so that I can add new item to the store.
+* As a Store Owner – I want to be able to update a product so that I can change the details in it.
+* As a Store Owner – I want to be able to delete a product so that I can remove items that are not in stock anymore.
