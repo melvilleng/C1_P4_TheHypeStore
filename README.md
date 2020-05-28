@@ -180,7 +180,7 @@ On Gitpod I will login to Heroku first after that I will git push to Heroku mast
 
 ## Credit ##
 * Stockx
-* Original Fook [https://www.originalfook.com/]
+* [Original Fook](https://www.originalfook.com/)
 * Stackoverflow
 * Special thanks to my [lecturer](https://github.com/kunxin-chor/) for the guidance.
 
