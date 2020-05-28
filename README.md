@@ -52,29 +52,29 @@ ER Diagram can be found [here](https://github.com/melvilleng/CI_P4_TheHypeStore/
 Hand side and the burger logo is on the right-hand side.
 On large screen device, the left-hand side has the company logo and when clicked it will bring you to the home page. Followed by The Hype Shop, Products and Reviews are also at the left hand side of the navigation bar. At the middle is the search bar.
 On the right-hand side of the navigation bar are as follows:
-(when the site user is not logged in)
+* (when the site user is not logged in)
 1.	Login
 2.	Sign Up
 3.	Cart
-(when the site user is logged in)
+* (when the site user is logged in)
 1.	Profile
 2.	Log Out
 3.	Cart
-(when staff or admin is logged in)
+* (when staff or admin is logged in)
 1.	Profile
 2.	Log Out
 3.	Cart
-*The Footer is on every page except on stripe page and cart page. The footer will link back to home, there a search bar there, there two Icon that link to the Facebook or Instagram account.
-*On the Login page, the user can login with username or email that the user has sign up for. If the site user does not have an account, he can sign up for it. There a forget Password link where they can click and request for a new password.
-*On the Sign-up page, the new site user can sign up for an account by entering email, username, first name, last name, address, zip code, country, city, contact, password.
-*On the profile page the user can see his profile on the left and order history on the right.
-*The cart page can only be access if the user is logged in, at the cart page the user can click continue shopping to bring back to the product page or check out the item in cart.
-*The product is where the site user can see all the product listed on the shop the can click on the view more and it will bring them to a more detail product page show the size and description and price where they can add to cart from. The detail product page u are able to click on the size chart and a size chart will pop up. U can also leave a review for the product and it will be display on the overall shop review.
-*Just below the Nav bar the site user can sort between different category like shirts, pants, hoodie.
-*The search bar they can search the product by its name to find for it. 
-*There a back to the top button.
-*When the staff or site admin login, they can see the creating listing on the nav bar where they can create listing to upload product to the website. They can write detail about the product like name, price, description.
-The staff or site admin also can edit or delete the product on the product page.
+* The Footer is on every page except on stripe page and cart page. The footer will link back to home, there a search bar there, there two Icon that link to the Facebook or Instagram account.
+* On the Login page, the user can login with username or email that the user has sign up for. If the site user does not have an account, he can sign up for it. There a forget Password link where they can click and request for a new password.
+* On the Sign-up page, the new site user can sign up for an account by entering email, username, first name, last name, address, zip code, country, city, contact, password.
+* On the profile page the user can see his profile on the left and order history on the right.
+* The cart page can only be access if the user is logged in, at the cart page the user can click continue shopping to bring back to the product page or check out the item in cart.
+* The product is where the site user can see all the product listed on the shop the can click on the view more and it will bring them to a more detail product page show the size and description and price where they can add to cart from. The detail product page u are able to click on the size chart and a size chart will pop up. U can also leave a review for the product and it will be display on the overall shop review.
+* Just below the Nav bar the site user can sort between different category like shirts, pants, hoodie.
+* The search bar they can search the product by its name to find for it. 
+* There a back to the top button.
+* When the staff or site admin login, they can see the creating listing on the nav bar where they can create listing to upload product to the website. They can write detail about the product like name, price, description.
+* The staff or site admin also can edit or delete the product on the product page.
 
 Future features
 * Add a subscription feature
@@ -89,20 +89,21 @@ be view via this [link](https://github.com/melvilleng/bnsmarketplace/blob/master
 
 ## Technologies Used ##
 Below are a list of framework, programming languages and tools used for the website:
-•	HTML
-•	CSS
-•	Javascript
-•	Jquery
-•	Bootstrap
-•	Python
-•	Django
-•	Postgres
-•	Google Fonts
-•	Font Awesome
-•	Gitpod
-•	Git
-•	Github
-•	Heroku
+* HTML
+* CSS
+* Javascript
+* Jquery
+* Bootstrap
+* Python
+* Django
+* Postgres
+* Google Fonts
+* Font Awesome
+* Gitpod
+* Git
+* Github
+* Heroku
+* DBeaver
 
 ### Testing ###
 * Home Page:
@@ -116,7 +117,7 @@ Below are a list of framework, programming languages and tools used for the webs
     After typing in the username or email and password I have register earlier I am able to be redirect to the home page.
 
    Press on the sign-up button it will redirect me to the sign-up page.
-Test on the forgot password feature and I can reset my password.
+* Test on the forgot password feature and I can reset my password.
 
     After sign in the navbar got change to Profile, Logout ,cart on the right and on the left still remain the same.
 
@@ -128,7 +129,7 @@ Once I click on view more it will bring me to the product detail page where when
 Tested the back button and bring me back to the overall product page. 
 Click on another product view more and try adding the item into cart.
 Once I click the add to cart button I am bring to the cart page. 
-Cart Page
+* Cart Page
 Tested the continue shopping button it will bring me back to the overall product page. Now I try adding another item to cart. The 2nd item got added successfully. The total sum for both the item are correct. 
 Try the update quantity feature and the quantity change along with the price and total. All showing correct amount.
 Tested the delete feature and the item was remove from cart.
@@ -140,11 +141,12 @@ On each product details page at the button there a leave review section. Tested 
 * Logout
 After that I tested the logout feature and the user account was logout.
 
-Testing with staff account or admin.(username=staff,password=m0n9b8v7)
+* Testing with staff account or admin.(username=staff,password=m0n9b8v7)
 With the staff account I click on the creating listing. 
 Filling in all the forms and upload picture successfully. 
 Tested the submit button and the product was listing on the overall product page.
- The edit button on the listing will bring me to the edit listing page where I can edit each attribute. Tested one by one and all updated on what I change.
+The edit button on the listing will bring me to the edit listing page where I can edit each attribute. 
+Tested one by one and all updated on what I change.
 Tested the delete button and the listing is deleted.
 Test the logout feature and the staff was logged out.
 
@@ -156,19 +158,7 @@ Test the logout feature and the staff was logged out.
 
 The website was tested on different web browser and different mobile device. Device and browsers tested on are:
 
-Ipad
-Safari
-MacBook Air –
-Google Chrome
-Safari
-Window laptop
-google chrome
-Microsoft Edge
-Iphone
-Safari
-Samsung S10
-Google Chrome
-Samsung Web Browser
+Ipad Safari MacBook Air – Google Chrome Safari Window laptop google chrome Microsoft Edge Iphone Safari Samsung S10 Google Chrome Samsung Web Browser
 
 
 
