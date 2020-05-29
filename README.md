@@ -1,6 +1,6 @@
-# TheHypeShop Marketplace #
+# TheHypeShop #
 
-### Data-Centric Development Milestone Project 4 ###
+### Full Stack Frameworks with Django Milestone Project 4 ###
 By: Melville Ng
 
 ## Demo ##
