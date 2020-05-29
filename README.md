@@ -1,4 +1,4 @@
-# TheHypeShop #
+# The Hype Shop #
 
 ### Full Stack Frameworks with Django Milestone Project 4 ###
 By: Melville Ng
