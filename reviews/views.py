@@ -4,25 +4,29 @@ from product.models import Product
 from reviews.models import Review
 from django.contrib import messages
 
+
 # Create your views here.
 def show_review(request):
     reviews = Review.objects.all()
-    return render(request, 'reviews/show_review.template.html',{
+    return render(request, 'reviews/show_review.template.html', {
         'reviews': reviews
     })
+
 
 def create_review(request, product_id):
     if request.method == "POST":
         create_review_form = ReviewForm(request.POST)
         review = create_review_form.save(commit=False)
         review.user = request.user
-        review.product= get_object_or_404(Product, pk= product_id)
+        review.product = get_object_or_404(Product, pk=product_id)
         review.save()
         messages.success(request, "Review Added")
         return redirect(reverse(show_review))
     else:
         create_review_form = ReviewForm()
 
-    return render(request, 'reviews/create_review.template.html',{
+    return render(request, 'reviews/create_review.template.html', {
         'form': create_review_form
     })
+
+# this is a comment just want to test pycharm
